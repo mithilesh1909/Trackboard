@@ -1,0 +1,8 @@
+.board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 24px; align-items: start; }
+.column { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; min-height: 200px; }
+.col-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--bg-elevated); }
+.col-title { display: flex; align-items: center; gap: 8px; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.col-dot { width: 8px; height: 8px; border-radius: 50%; }
+.col-count { background: var(--bg-hover); color: var(--text-secondary); font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 20px; }
+.col-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; min-height: 120px; }
+.empty-col { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 30px; color: var(--text-muted); font-size: 12px; }

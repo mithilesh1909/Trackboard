@@ -1,0 +1,23 @@
+.modal-backdrop { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.modal { background: var(--bg-card); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); width: 100%; max-width: 520px; box-shadow: var(--shadow-lg); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border);
+  h3 { font-size: 16px; font-weight: 700; }
+}
+.close-btn { width: 30px; height: 30px; border-radius: 7px; background: var(--bg-hover); border: none; color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; &:hover { background: var(--red-soft); color: var(--red); } }
+.modal-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 6px;
+  label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); }
+  input, textarea, select { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; color: var(--text-primary); font-size: 13px; transition: all 0.2s; &::placeholder { color: var(--text-muted); } &:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); } }
+  textarea { resize: vertical; font-family: 'DM Sans', sans-serif; }
+  select { cursor: pointer; }
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field-error { font-size: 11px; color: var(--red); }
+.tag-input-wrap { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; display: flex; flex-wrap: wrap; gap: 6px; min-height: 42px; align-items: center; &:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  input { background: none; border: none; padding: 2px 4px; font-size: 13px; flex: 1; min-width: 100px; }
+}
+.tags-list { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { display: inline-flex; align-items: center; gap: 4px; background: var(--accent-soft); border: 1px solid rgba(108,99,255,0.3); color: var(--accent); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+  button { background: none; border: none; color: var(--accent); font-size: 14px; cursor: pointer; padding: 0; opacity: 0.6; &:hover { opacity: 1; } }
+}
+.modal-footer { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 16px 24px; border-top: 1px solid var(--border); }

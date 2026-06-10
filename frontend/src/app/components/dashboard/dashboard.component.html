@@ -1,0 +1,16 @@
+<div class="dashboard">
+  <app-sidebar [activeView]="activeView" [user]="user" (viewChange)="activeView = $event"></app-sidebar>
+  <div class="main">
+    <app-header [title]="headerTitle" (addTask)="openNewTask()" (searchChange)="searchQuery = $event"></app-header>
+    <div class="content">
+      <ng-container [ngSwitch]="activeView">
+        <app-task-board *ngSwitchCase="'board'" filterStatus="all" [search]="searchQuery" (editTask)="onEditTask($event)"></app-task-board>
+        <app-task-board *ngSwitchCase="'todo'" filterStatus="todo" [search]="searchQuery" (editTask)="onEditTask($event)"></app-task-board>
+        <app-task-board *ngSwitchCase="'in-progress'" filterStatus="in-progress" [search]="searchQuery" (editTask)="onEditTask($event)"></app-task-board>
+        <app-task-board *ngSwitchCase="'done'" filterStatus="done" [search]="searchQuery" (editTask)="onEditTask($event)"></app-task-board>
+        <app-analytics *ngSwitchCase="'analytics'"></app-analytics>
+      </ng-container>
+    </div>
+  </div>
+  <app-task-modal [visible]="modalVisible" [task]="editingTask" (save)="saveTask($event)" (close)="closeModal()"></app-task-modal>
+</div>

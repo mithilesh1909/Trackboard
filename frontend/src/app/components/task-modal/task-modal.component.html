@@ -1,0 +1,50 @@
+<div class="modal-backdrop" *ngIf="visible" (click)="onBackdrop($event)">
+  <div class="modal animate-in">
+    <div class="modal-header">
+      <h3>{{ task ? 'Edit Task' : 'New Task' }}</h3>
+      <button class="close-btn" (click)="close.emit()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="modal-body">
+        <div class="field">
+          <label>Task Title *</label>
+          <input type="text" formControlName="title" placeholder="Enter a clear task title..."/>
+          <span class="field-error" *ngIf="form.get('title')?.invalid && form.get('title')?.touched">Title required (min 3 chars)</span>
+        </div>
+        <div class="field">
+          <label>Description *</label>
+          <textarea formControlName="description" rows="3" placeholder="Describe what needs to be done..."></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Status</label>
+            <select formControlName="status"><option value="todo">Todo</option><option value="in-progress">In Progress</option><option value="done">Done</option></select>
+          </div>
+          <div class="field"><label>Priority</label>
+            <select formControlName="priority"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Category</label>
+            <select formControlName="category"><option *ngFor="let c of categories" [value]="c">{{ c }}</option></select>
+          </div>
+          <div class="field"><label>Due Date *</label>
+            <input type="date" formControlName="due_date"/>
+          </div>
+        </div>
+        <div class="field">
+          <label>Tags</label>
+          <div class="tag-input-wrap">
+            <div class="tags-list">
+              <span class="tag" *ngFor="let tag of tags">{{ tag }}<button type="button" (click)="removeTag(tag)">×</button></span>
+            </div>
+            <input type="text" [(ngModel)]="tagInput" [ngModelOptions]="{standalone:true}" (keydown)="onTagKey($event)" placeholder="Add tag + Enter"/>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" (click)="close.emit()">Cancel</button>
+        <button type="submit" class="btn btn-primary">{{ task ? 'Save Changes' : 'Create Task' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

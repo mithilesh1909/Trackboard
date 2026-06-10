@@ -1,0 +1,15 @@
+<div class="board">
+  <div class="column" *ngFor="let col of columns">
+    <div class="col-header">
+      <div class="col-title"><span class="col-dot" [style.background]="col.color"></span><span>{{ col.label }}</span></div>
+      <span class="col-count">{{ getColumnTasks(col.id).length }}</span>
+    </div>
+    <div class="col-body">
+      <app-task-card *ngFor="let task of getColumnTasks(col.id); trackBy: trackById" [task]="task" (edit)="editTask.emit($event)" (delete)="onDelete($event)" (statusChange)="onStatusChange($event)"></app-task-card>
+      <div class="empty-col" *ngIf="getColumnTasks(col.id).length === 0">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span>No tasks</span>
+      </div>
+    </div>
+  </div>
+</div>

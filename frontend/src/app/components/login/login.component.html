@@ -1,0 +1,30 @@
+<div class="login-wrap">
+  <div class="login-bg"><div class="orb orb1"></div><div class="orb orb2"></div><div class="grid"></div></div>
+  <div class="login-card animate-in">
+    <div class="brand">
+      <div class="brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" stroke="#fff" stroke-width="2" stroke-linecap="round"/><rect x="9" y="3" width="6" height="4" rx="1" stroke="#fff" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span>TaskFlow</span>
+      <span class="py-badge">Python</span>
+    </div>
+    <h1>{{ mode === 'login' ? 'Welcome back' : 'Create account' }}</h1>
+    <p class="subtitle">{{ mode === 'login' ? 'Sign in to your workspace' : 'Start managing tasks smarter' }}</p>
+    <div class="error-msg" *ngIf="error">{{ error }}</div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="field" *ngIf="mode === 'register'"><label>Full Name</label><input type="text" formControlName="name" placeholder="Mithilesh Singh"/></div>
+      <div class="field"><label>Email</label><input type="email" formControlName="email" placeholder="hello@example.com"/></div>
+      <div class="field"><label>Password</label><input type="password" formControlName="password" placeholder="••••••••"/></div>
+      <button type="submit" class="btn btn-primary submit-btn" [disabled]="loading">
+        <span *ngIf="!loading">{{ mode === 'login' ? 'Sign In' : 'Create Account' }}</span>
+        <span *ngIf="loading" class="spinner"></span>
+      </button>
+    </form>
+    <button class="demo-btn" (click)="fillDemo()" *ngIf="mode === 'login'">Use demo credentials</button>
+    <div class="stack-info">
+      <span>⚡ FastAPI</span><span>🐍 Python 3.12</span><span>🗄 SQLAlchemy</span><span>🔐 JWT</span>
+    </div>
+    <div class="switch-mode">
+      {{ mode === 'login' ? "No account?" : 'Have an account?' }}
+      <button (click)="toggleMode()">{{ mode === 'login' ? 'Sign Up' : 'Sign In' }}</button>
+    </div>
+  </div>
+</div>
