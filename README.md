@@ -81,4 +81,4 @@ SQLALCHEMY_DATABASE_URL = "postgresql://user:password@localhost/taskflow"
 And install: `pip install psycopg2-binary`
 No other code changes needed — SQLAlchemy handles the rest.
 
-And ofc made with 💓by Mithilesh
+And ofc made with ❤️ by Mithilesh
